@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="547.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ServersController">
+  <tabs>
+    <Tab text="cFTP">
+         <content>
+            <SplitPane dividerPositions="0.3474903474903475" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="252.0" prefWidth="600.0">
+                     <children>
+                        <GridPane layoutX="129.0" layoutY="14.0" prefHeight="60.0" prefWidth="425.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="15.0">
+                          <columnConstraints>
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="47.0" />
+                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="151.0" minWidth="0.0" prefWidth="130.0" />
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="223.0" minWidth="0.0" prefWidth="74.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="223.0" minWidth="0.0" prefWidth="130.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Server:" />
+                              <ComboBox fx:id="cbbFtpServer" prefWidth="150.0" promptText="Select a Server" GridPane.columnIndex="1" />
+                              <Label text="User:" GridPane.rowIndex="1" />
+                              <Label text="Password:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <TextField fx:id="txtFtpUser" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <PasswordField fx:id="txtFtpPasswd" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                           </children>
+                        </GridPane>
+                        <Group layoutX="78.0" layoutY="87.0" AnchorPane.topAnchor="80.0">
+                           <children>
+                              <fx:define>
+                              <ToggleGroup fx:id="rdGroupFtp"/>
+                              </fx:define>
+                              <RadioButton layoutX="69.0" mnemonicParsing="false" text="SENF">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="rdGroupFtp" />
+                                 </toggleGroup></RadioButton>
+                              <RadioButton layoutX="140.0" mnemonicParsing="false" text="HOME" toggleGroup="$rdGroupFtp" />
+                              <RadioButton mnemonicParsing="false" selected="true" text="XML" toggleGroup="$rdGroupFtp" />
+                           </children>
+                        </Group>
+                        <TextField fx:id="txtFtpFile" layoutX="78.0" layoutY="103.0" prefWidth="500.0" promptText="Put NFe Key" AnchorPane.topAnchor="105.0" />
+                        <Group layoutX="447.0" layoutY="141.0">
+                           <children>
+                              <Button fx:id="btnFtpRun" mnemonicParsing="false" onAction="#runFtp" prefHeight="25.0" prefWidth="60.0" text="Run" />
+                              <Button fx:id="btnFtpClean" layoutX="73.0" mnemonicParsing="false" onAction="#cleanFtp" prefWidth="60.0" text="Clean" />
+                           </children>
+                        </Group>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                     <children>
+                        <Group>
+                           <children>
+                              <TextArea fx:id="txtFtpResult" editable="false" prefHeight="335.0" prefWidth="600.0" />                              
+                           </children>
+                        </Group>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </content></Tab>
+    <Tab text="Setup">
+         <content>
+            <AnchorPane prefHeight="454.0" prefWidth="600.0">
+               <children>
+                  <Label layoutX="10.0" layoutY="29.0" text="FTP Exe Dir.: " />
+                  <TextField fx:id="txtFtp" layoutX="80.0" layoutY="25.0" prefHeight="25.0" prefWidth="470.0" />    
+                  <Button fx:id="btnFile" layoutX="559.0" layoutY="25.0" mnemonicParsing="false" onAction="#searchFile" prefHeight="22.0" prefWidth="27.0" text="..." />           
+                  <Label layoutX="10.0" layoutY="59.0" text="Host Name: " />
+                  <TextField fx:id="txtHost" layoutX="80.0" layoutY="56.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="370.0" />
+                  <Label layoutX="240.0" layoutY="59.0" text="IP Address: " AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="298.0" />
+                  <TextField fx:id="txtIp" layoutX="310.0" layoutY="56.0" />
+                  <Label layoutX="10.0" layoutY="120.0" text="XML:" />
+                  <TextField fx:id="txtXml" layoutX="50.0" layoutY="117.0" prefHeight="25.0" prefWidth="500.0" />
+                  <Label layoutX="10.0" layoutY="150.0" text="SENF:" />
+                  <TextField fx:id="txtSenf" layoutX="50.0" layoutY="147.0" prefHeight="25.0" prefWidth="500.0" />
+                  <Label layoutX="10.0" layoutY="180.0" text="HOME:" />
+                  <Label layoutX="240.0" layoutY="95.0" text="Folders">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
+                  <TextField fx:id="txtHome" layoutX="50.0" layoutY="177.0" prefHeight="25.0" prefWidth="500.0" />
+                  <Separator layoutY="89.0" prefHeight="0.0" prefWidth="600.0" />
+                  <Separator layoutX="-1.0" layoutY="258.0" prefHeight="0.0" prefWidth="600.0" />
+                  <Group layoutX="180.0" layoutY="219.0" AnchorPane.bottomAnchor="265.0" AnchorPane.rightAnchor="20.0">
+                     <children>
+                        <Button fx:id="btnSave" mnemonicParsing="false" onAction="#save" prefWidth="60.0" text="Save" />
+                        <Button fx:id="btnRemove" layoutX="73.0" mnemonicParsing="false" onAction="#remove" prefWidth="60.0" text="Remove" />
+                        <Button fx:id="btnClean" layoutX="146.0" mnemonicParsing="false" onAction="#clean" prefWidth="60.0" text="Clean" />
+                     </children>
+                  </Group>
+                  <TableView fx:id="tblServers" layoutY="261.0" prefHeight="255.0" prefWidth="600.0">
+                    <columns>
+                      <TableColumn fx:id="colHost" prefWidth="150.0" text="HOST" />
+                      <TableColumn fx:id="colIp" minWidth="0.0" prefWidth="131.0" text="IP" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  
+               </children>
+            </AnchorPane>
+         </content></Tab>
+  </tabs>
+</TabPane>
